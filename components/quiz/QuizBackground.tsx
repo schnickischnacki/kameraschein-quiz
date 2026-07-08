@@ -30,6 +30,7 @@ export function QuizBackground() {
         maxSpeed={5000}
         resistance={750}
         returnDuration={1.6}
+        style={{}}
       />
     </div>
   );
