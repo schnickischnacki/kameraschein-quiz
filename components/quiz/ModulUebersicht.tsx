@@ -29,9 +29,9 @@ export function ModulUebersicht() {
 
   return (
     <main className="flex flex-col gap-6">
-      <header>
+      <header className="rounded-2xl bg-black/40 p-4 ring-1 ring-white/10 backdrop-blur-sm">
         <h1 className="text-2xl font-bold text-white">🎬 Kameraschein-Quiz</h1>
-        <p className="mt-1 text-white/75">
+        <p className="mt-1 text-white/85">
           Üb hier für die praktische Kamerascheinprüfung – Modul für Modul oder
           quer durch alles in der Blitzrunde. Alles bleibt auf deinem Gerät.
         </p>

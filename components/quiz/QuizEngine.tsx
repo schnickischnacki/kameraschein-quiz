@@ -205,7 +205,7 @@ export function QuizEngine({
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between gap-2">
         <ExitButton
-          hinweis={"Der Modul-Stand kann später über „Unterbrochenen Durchgang fortsetzen“ wieder aufgenommen werden."}
+          hinweis="Das Modul startet dann beim nächsten Mal wieder von vorn."
           onBeforeExit={() => loescheSession()}
         />
         <span className="text-sm text-white/70">
