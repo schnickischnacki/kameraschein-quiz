@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * Blitzrunde (Kahoot-Charakter): 12 Fragen aus dem Gesamtpool, pro Frage
- * 15 Sekunden Countdown. Punkte = Basis + Geschwindigkeitsbonus.
+ * Blitzrunde (Kahoot-Charakter): 10 Fragen aus dem Gesamtpool, pro Frage
+ * 10 Sekunden Countdown. Punkte = Basis + Geschwindigkeitsbonus.
  * Es kommen nur schnell beantwortbare Fragetypen in den Pool
  * (Single Choice, Wahr/Falsch – ein Tap genügt).
  */
@@ -14,12 +14,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FrageRenderer } from "@/components/quiz/frage-typen";
 import { FeedbackPanel } from "@/components/quiz/FeedbackPanel";
+import { ExitButton } from "@/components/quiz/ExitButton";
 import { blitzPunkte, istRichtig, mische } from "@/lib/quiz-utils";
-import { ladeFortschritt, speichereBlitzHighscore } from "@/lib/quiz-storage";
+import {
+  ladeFortschritt,
+  speichereBlitzHighscore,
+  speichereBlitzLetzteRunde,
+} from "@/lib/quiz-storage";
 import { alleFragen, istBlitzTauglich, type Question } from "@/data/questions";
 
-const FRAGEN_PRO_RUNDE = 12;
-const SEKUNDEN_PRO_FRAGE = 15;
+const FRAGEN_PRO_RUNDE = 10;
+const SEKUNDEN_PRO_FRAGE = 10;
 
 type Phase = "intro" | "frage" | "ergebnis";
 
@@ -96,6 +101,11 @@ export function BlitzEngine() {
     setAntwort(undefined);
     if (index + 1 >= runde.length) {
       speichereBlitzHighscore(punkte);
+      speichereBlitzLetzteRunde({
+        richtig: richtigAnzahl,
+        gesamt: runde.length,
+        punkte,
+      });
       setHighscore((h) => Math.max(h, punkte));
       setPhase("ergebnis");
     } else {
@@ -180,14 +190,17 @@ export function BlitzEngine() {
   const zeitAnteil = restSekunden / SEKUNDEN_PRO_FRAGE;
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
+      <div className="flex items-center justify-between">
+        <ExitButton hinweis="Der Blitzstand geht verloren." />
+        <span className="font-semibold tabular-nums text-white">{punkte} Punkte</span>
+      </div>
+      <div className="flex items-center justify-between text-sm text-white/70">
         <span className="tabular-nums">
           Frage {index + 1}/{runde.length}
         </span>
-        <span className="font-semibold tabular-nums text-foreground">{punkte} Punkte</span>
       </div>
       {/* Countdown-Balken */}
-      <div className="h-3 overflow-hidden rounded-full bg-muted" aria-hidden>
+      <div className="h-3 overflow-hidden rounded-full bg-white/15" aria-hidden>
         <motion.div
           className={
             zeitAnteil > 0.4
@@ -200,7 +213,7 @@ export function BlitzEngine() {
           transition={{ duration: 0.1, ease: "linear" }}
         />
       </div>
-      <p className="text-center text-2xl font-bold tabular-nums" aria-live="polite">
+      <p className="text-center text-2xl font-bold tabular-nums text-white" aria-live="polite">
         {Math.ceil(restSekunden)}
       </p>
       <AnimatePresence mode="wait">
@@ -212,7 +225,7 @@ export function BlitzEngine() {
           transition={{ duration: 0.15 }}
           className="flex flex-col gap-4"
         >
-          <h2 className="text-lg font-semibold leading-snug">{frage.frage}</h2>
+          <h2 className="rounded-xl bg-card px-4 py-3 text-lg font-semibold leading-snug text-card-foreground ring-1 ring-foreground/10">{frage.frage}</h2>
           <FrageRenderer
             key={frage.id}
             frage={frage}

@@ -15,27 +15,14 @@ export const modul5Fragen: Question[] = [
     optionen: [
       "Auf- und Abbau der Kamera sowie Handling des Stativs",
       "Je eine Frage aus Handling, grundsätzliche Einstellungen, LOG/REC709, Fokussieren, Belichten und Weißabgleich",
-      "Zwei Fragen aus dem Bereich Audio",
+      "Fragen aus dem Bereich Audio (Signalkette, Pegeln, Abhören)",
       "Eine schriftliche Klausur über Kameratheorie",
     ],
     richtig: [0, 1, 2],
     feedbackRichtig:
-      "Richtig – die Prüfung ist praktisch: Auf-/Abbau und Stativ-Handling werden immer geprüft, dazu je eine Frage pro Themenbereich und zwei aus dem Bereich Audio.",
+      "Richtig – die Prüfung ist praktisch: Auf-/Abbau und Stativ-Handling werden immer geprüft, dazu Fragen aus allen Themenbereichen inklusive Audio.",
     feedbackFalsch:
-      "Die Prüfung ist eine praktische Demonstration, keine Klausur: immer Auf-/Abbau und Stativ, je eine Frage pro Themenbereich – und Audio ist mit ZWEI Fragen doppelt gewichtet.",
-  },
-  {
-    id: "m5-2",
-    modul: 5,
-    type: "single",
-    frage:
-      "Aus welchem Themenbereich werden in der Prüfung zwei Fragen gestellt (statt einer)?",
-    optionen: ["Audio", "Belichten", "Fokussieren", "Weißabgleich"],
-    richtig: 0,
-    feedbackRichtig:
-      "Richtig: Audio ist mit zwei Fragen vertreten – und laut Nutzungskontextanalyse auch der größte Unsicherheitsfaktor. Plane dort extra Übungszeit ein.",
-    feedbackFalsch:
-      "Es ist Audio – der Bereich mit dem größten Stolperpotenzial (Handle, Routing, Pegeln, Abhören) bekommt zwei Fragen. Die anderen Bereiche je eine.",
+      "Die Prüfung ist eine praktische Demonstration, keine Klausur: Auf-/Abbau und Stativ-Handling gehören immer dazu, außerdem Fragen aus allen Themenbereichen – auch Audio.",
   },
   {
     id: "m5-3",
@@ -59,12 +46,12 @@ export const modul5Fragen: Question[] = [
     modul: 5,
     type: "truefalse",
     frage:
-      "In der Prüfung wird auch erwartet, dass du weißt, wo die Kamera nachts gelagert wird und ob die Ausrüstung versichert ist.",
+      "In der Prüfung wird auch erwartet, dass du weißt, die Kamera nicht nachts im Auto zu lagern und dass die Ausrüstung nicht über die Hochschule versichert ist.",
     richtig: true,
     feedbackRichtig:
-      "Richtig – die Prüferfragen decken auch Organisation ab: nachts nie im Auto lagern, und die Ausrüstung ist NICHT über die Hochschule versichert (du haftest).",
+      "Richtig – die Prüferfragen decken auch Organisation ab: Kamera nachts nie im Auto lagern, und die Ausrüstung ist NICHT über die Hochschule versichert (du haftest).",
     feedbackFalsch:
-      "Doch: Auch Organisatorisches ist prüfungsrelevant. Die Antworten kennst du aus Modul 1: nachts nicht im Auto lagern, keine Hochschulversicherung – du haftest selbst.",
+      "Doch: Auch Organisatorisches ist prüfungsrelevant. Die Antworten kennst du aus Modul 1: Kamera nachts nicht im Auto lagern, keine Hochschulversicherung – du haftest selbst.",
   },
   {
     id: "m5-5",
@@ -73,16 +60,16 @@ export const modul5Fragen: Question[] = [
     frage:
       "Prüfungsklassiker: Warum muss die Kamera zum Akkuwechsel ausgeschaltet sein?",
     optionen: [
-      "Das ist die verbindliche Regel aus dem Kurs – Einlegen und Entnehmen nur bei ausgeschalteter Kamera",
+      "Um Kurzschlüsse an den Akku-Kontakten zu vermeiden",
       "Der Akku lässt sich mechanisch nur bei ausgeschalteter Kamera entriegeln",
       "Die Kamera würde sonst automatisch formatieren",
       "Nur so wird der Akkustand korrekt angezeigt",
     ],
     richtig: 0,
     feedbackRichtig:
-      "Richtig – diese Regel gilt ohne Ausnahme und wird in der Prüfung beim Demonstrieren des Akkuwechsels erwartet: erst Power-Schalter kontrollieren, dann wechseln.",
+      "Richtig – bei eingeschalteter Kamera fließt Strom über die Kontakte; ein Aus- oder Einlegen unter Last kann Kontakte und Elektronik durch Funkenschlag beschädigen. Deshalb wird in der Prüfung erwartet, dass du vor dem Wechsel sichtbar den Power-Schalter kontrollierst.",
     feedbackFalsch:
-      "Mechanisch ginge es auch eingeschaltet – genau deshalb wird es geprüft: Die Kursregel lautet, dass Akku-Einlegen und -Entnahme NUR bei ausgeschalteter Kamera erfolgen. Zeige in der Prüfung explizit, dass du den Power-Schalter kontrollierst.",
+      "Der eigentliche Grund ist elektrisch, nicht mechanisch: Bei eingeschalteter Kamera fließt Strom über die Akku-Kontakte – ein Wechsel unter Last kann Kurzschlüsse und Schäden verursachen. Zeige in der Prüfung deshalb explizit, dass du den Power-Schalter kontrollierst, bevor du den Akku bewegst.",
   },
   {
     id: "m5-6",

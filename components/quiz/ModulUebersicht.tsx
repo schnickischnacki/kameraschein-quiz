@@ -30,8 +30,8 @@ export function ModulUebersicht() {
   return (
     <main className="flex flex-col gap-6">
       <header>
-        <h1 className="text-2xl font-bold">🎬 Kameraschein-Quiz</h1>
-        <p className="mt-1 text-muted-foreground">
+        <h1 className="text-2xl font-bold text-white">🎬 Kameraschein-Quiz</h1>
+        <p className="mt-1 text-white/75">
           Üb hier für die praktische Kamerascheinprüfung – Modul für Modul oder
           quer durch alles in der Blitzrunde. Alles bleibt auf deinem Gerät.
         </p>
@@ -40,8 +40,8 @@ export function ModulUebersicht() {
       {/* Gesamtfortschritt */}
       <section aria-label="Gesamtfortschritt">
         <div className="mb-2 flex items-center justify-between text-sm">
-          <span className="font-medium">Dein Fortschritt</span>
-          <span className="tabular-nums text-muted-foreground">
+          <span className="font-medium text-white">Dein Fortschritt</span>
+          <span className="tabular-nums text-white/70">
             {bestandenAnzahl}/{module.length} Module bestanden
           </span>
         </div>
@@ -110,12 +110,28 @@ export function ModulUebersicht() {
           nativeButton={false} render={<Link href="/blitzrunde" />}
         >
           ⚡ Blitzrunde – gegen die Zeit
-          {fortschritt && fortschritt.blitzHighscore > 0 && (
-            <span className="ml-1 font-normal opacity-80">
-              (Highscore: {fortschritt.blitzHighscore})
-            </span>
-          )}
         </Button>
+        {fortschritt && (fortschritt.blitzHighscore > 0 || fortschritt.blitzLetzteRunde) && (
+          <div className="-mt-1 space-y-0.5 px-1 text-xs text-white/75">
+            <p className="tabular-nums">
+              Highscore: {fortschritt.blitzHighscore}
+              {fortschritt.blitzLetzteRunde && (
+                <>
+                  {" · letzte Runde: "}
+                  {fortschritt.blitzLetzteRunde.richtig} von {fortschritt.blitzLetzteRunde.gesamt} richtig
+                </>
+              )}
+            </p>
+            <p className="text-white/60">
+              Auswahl aus den Prüfungsfragen – nicht der vollständige Katalog.
+            </p>
+          </div>
+        )}
+        {fortschritt && fortschritt.blitzHighscore === 0 && !fortschritt.blitzLetzteRunde && (
+          <p className="-mt-1 px-1 text-xs text-white/60">
+            Auswahl aus den Prüfungsfragen – nicht der vollständige Katalog.
+          </p>
+        )}
         <Button
           size="lg"
           variant="secondary"
@@ -126,7 +142,7 @@ export function ModulUebersicht() {
         </Button>
       </section>
 
-      <footer className="text-center text-xs text-muted-foreground">
+      <footer className="text-center text-xs text-white/60">
         Kein Login, keine Datenübertragung – dein Übungsstand wird nur lokal im
         Browser gespeichert.
       </footer>

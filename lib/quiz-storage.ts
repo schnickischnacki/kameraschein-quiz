@@ -13,6 +13,8 @@ export interface ModulErgebnis {
 export interface Fortschritt {
   module: Record<number, ModulErgebnis>;
   blitzHighscore: number;
+  /** Ergebnis der zuletzt gespielten (abgeschlossenen) Blitzrunde. */
+  blitzLetzteRunde?: { richtig: number; gesamt: number; punkte: number };
 }
 
 /** Laufende, unterbrochene Quiz-Session (zum Fortsetzen). */
@@ -35,7 +37,11 @@ export function ladeFortschritt(): Fortschritt {
     const raw = window.localStorage.getItem(FORTSCHRITT_KEY);
     if (!raw) return { module: {}, blitzHighscore: 0 };
     const parsed = JSON.parse(raw) as Fortschritt;
-    return { module: parsed.module ?? {}, blitzHighscore: parsed.blitzHighscore ?? 0 };
+    return {
+      module: parsed.module ?? {},
+      blitzHighscore: parsed.blitzHighscore ?? 0,
+      blitzLetzteRunde: parsed.blitzLetzteRunde,
+    };
   } catch {
     return { module: {}, blitzHighscore: 0 };
   }
@@ -65,6 +71,16 @@ export function speichereBlitzHighscore(punkte: number) {
     f.blitzHighscore = punkte;
     speichereFortschritt(f);
   }
+}
+
+export function speichereBlitzLetzteRunde(runde: {
+  richtig: number;
+  gesamt: number;
+  punkte: number;
+}) {
+  const f = ladeFortschritt();
+  f.blitzLetzteRunde = runde;
+  speichereFortschritt(f);
 }
 
 export function ladeSession(modulId: number): GespeicherteSession | null {

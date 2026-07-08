@@ -40,17 +40,17 @@ function optionKlasse(opts: {
   return cn(
     "w-full min-h-14 rounded-xl border-2 px-4 py-3 text-left text-base leading-snug transition-colors",
     "active:scale-[0.99]",
-    !opts.gesperrt && "border-border bg-card",
+    !opts.gesperrt && "border-border bg-card text-card-foreground",
     !opts.gesperrt && opts.gewaehlt && "border-primary bg-primary/10",
-    opts.gesperrt && opts.richtig === true && "border-emerald-500 bg-emerald-500/15",
+    opts.gesperrt && opts.richtig === true && "border-emerald-500 bg-emerald-50 text-emerald-950",
     opts.gesperrt &&
       opts.richtig === false &&
       opts.gewaehlt &&
-      "border-red-500 bg-red-500/15",
+      "border-red-500 bg-red-50 text-red-950",
     opts.gesperrt &&
       opts.richtig === false &&
       !opts.gewaehlt &&
-      "border-border bg-card opacity-60"
+      "border-border bg-muted text-muted-foreground"
   );
 }
 
@@ -201,8 +201,8 @@ export function MatchFrage({
             key={i}
             className={cn(
               "rounded-xl border-2 p-3",
-              korrekt === true && "border-emerald-500 bg-emerald-500/15",
-              korrekt === false && "border-red-500 bg-red-500/15",
+              korrekt === true && "border-emerald-500 bg-emerald-50 text-emerald-950",
+              korrekt === false && "border-red-500 bg-red-50 text-red-950",
               korrekt === undefined && "border-border bg-card"
             )}
           >
@@ -334,8 +334,8 @@ export function GapfillFrage({
                   !gesperrt && "border-input",
                   gesperrt &&
                     (anzeige[i] === frage.luecken[i].richtig
-                      ? "border-emerald-500 bg-emerald-500/15"
-                      : "border-red-500 bg-red-500/15")
+                      ? "border-emerald-500 bg-emerald-50 text-emerald-950"
+                      : "border-red-500 bg-red-50 text-red-950")
                 )}
                 disabled={gesperrt}
                 value={anzeige[i]}

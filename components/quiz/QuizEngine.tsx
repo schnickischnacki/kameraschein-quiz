@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { FrageRenderer } from "@/components/quiz/frage-typen";
 import { FeedbackPanel } from "@/components/quiz/FeedbackPanel";
+import { ExitButton } from "@/components/quiz/ExitButton";
 import { istRichtig, mische } from "@/lib/quiz-utils";
 import {
   ladeSession,
@@ -202,9 +203,18 @@ export function QuizEngine({
   const frage = reihenfolge[index];
   return (
     <div className="flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-2">
+        <ExitButton
+          hinweis={"Der Modul-Stand kann später über „Unterbrochenen Durchgang fortsetzen“ wieder aufgenommen werden."}
+          onBeforeExit={() => loescheSession()}
+        />
+        <span className="text-sm text-white/70">
+          Modul {modul.id}: {modul.titel}
+        </span>
+      </div>
       <div className="flex items-center gap-3">
         <Progress value={((index + (beantwortet ? 1 : 0)) / reihenfolge.length) * 100} className="h-2" />
-        <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
+        <span className="shrink-0 text-sm tabular-nums text-white/70">
           {index + 1}/{reihenfolge.length}
         </span>
       </div>
@@ -217,7 +227,7 @@ export function QuizEngine({
           transition={{ duration: 0.2 }}
           className="flex flex-col gap-4"
         >
-          <h2 className="text-lg font-semibold leading-snug">{frage.frage}</h2>
+          <h2 className="rounded-xl bg-card px-4 py-3 text-lg font-semibold leading-snug text-card-foreground ring-1 ring-foreground/10">{frage.frage}</h2>
           <FrageRenderer
             key={frage.id}
             frage={frage}

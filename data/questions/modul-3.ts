@@ -198,24 +198,6 @@ export const modul3Fragen: Question[] = [
       "Das Histogramm zeigt die Helligkeitsverteilung aller Pixel: links dunkel, rechts hell. Es gibt keine „richtige Form“ – entscheidend ist, dass nichts ganz links (unterbelichtet) oder ganz rechts (überbelichtet) anschlägt.",
   },
   {
-    id: "m3-12",
-    modul: 3,
-    type: "single",
-    frage:
-      "„Manual Metering“ (MM) empfiehlt dir MM 0.0 – warum kann diese Empfehlung trotzdem falsch sein?",
-    optionen: [
-      "Die Kamera vergleicht mit Neutralgrau – ein bildfüllend schwarzer oder weißer Vorhang würde damit mittelgrau abgebildet",
-      "MM funktioniert nur bei Kunstlicht",
-      "MM misst nur die Bildecken",
-      "Die Anzeige reagiert zu langsam für Videoaufnahmen",
-    ],
-    richtig: 0,
-    feedbackRichtig:
-      "Genau: MM nimmt an, das Motiv sei im Schnitt neutralgrau. Bei sehr hellen oder sehr dunklen Motiven führt MM 0.0 deshalb zur Fehlbelichtung – die Kamera „weiß nicht“, was vor dem Objektiv ist.",
-    feedbackFalsch:
-      "Der Haken an MM: Es vergleicht den Bildausschnitt mit Neutralgrau. Ein weißer Vorhang würde bei MM 0.0 grau statt weiß – bei extremen Motiven musst du bewusst davon abweichen.",
-  },
-  {
     id: "m3-13",
     modul: 3,
     type: "gapfill",

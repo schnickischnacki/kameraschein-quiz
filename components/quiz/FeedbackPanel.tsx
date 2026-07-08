@@ -30,8 +30,8 @@ export function FeedbackPanel({
       className={cn(
         "rounded-xl border-2 p-4",
         richtig
-          ? "border-emerald-500 bg-emerald-500/10"
-          : "border-amber-500 bg-amber-500/10"
+          ? "border-emerald-500 bg-emerald-50 text-emerald-950"
+          : "border-amber-500 bg-amber-50 text-amber-950"
       )}
     >
       <p className="font-semibold">{richtig ? "✅ Richtig!" : "❌ Nicht ganz."}</p>

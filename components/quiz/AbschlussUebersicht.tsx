@@ -27,8 +27,8 @@ export function AbschlussUebersicht() {
   return (
     <main className="flex flex-col gap-6">
       <header>
-        <h1 className="text-2xl font-bold">📊 Dein Abschluss-Status</h1>
-        <p className="mt-1 text-muted-foreground">
+        <h1 className="text-2xl font-bold text-white">📊 Dein Abschluss-Status</h1>
+        <p className="mt-1 text-white/75">
           Überblick über alle Modultests. Bestanden heißt: mindestens 80 % in
           einem Durchgang.
         </p>

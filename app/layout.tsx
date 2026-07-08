@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { QuizBackground } from "@/components/quiz/QuizBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,9 @@ export default function RootLayout({
       lang="de"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <div className="mx-auto min-h-dvh w-full max-w-md px-4 py-6">
+      <body className="min-h-full flex flex-col bg-[#0a0018]">
+        <QuizBackground />
+        <div className="relative z-10 mx-auto min-h-dvh w-full max-w-md px-4 py-6">
           {children}
         </div>
       </body>
